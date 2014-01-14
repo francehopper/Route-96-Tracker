@@ -1,0 +1,261 @@
+<html>
+<title>tramTRACKER: Route 96 (East Brunswick - St. Kilda Beach)</title>
+<head>
+<script type="text/javascript">
+
+function findStopID()
+{
+	var textBox = document.getElementById('stopID').value; // grab the search query
+	var thispage = window.location.href; // grab the URL of the current page
+	var newURL = thispage.split("#", 1); // remove any existing search
+	window.location = (newURL + "#" + textBox); // jump to the stop if valid
+}
+function findStopArea()
+{
+	var area = document.getElementById("stopArea"); // read from the area dropdown
+	var strArea = area.options[area.selectedIndex].Text; // fetch the value
+	//document.write(strArea);
+	//document.write('<p>strArea: ' + strArea + '</p>');
+	var direction = document.getElementById("travelDirection"); // read from the direction dropdown
+	var strDirection = direction.options[direction.selectedIndex].Text; // fetch the value
+	//document.write('<p>strDirection: ' + strDirection + '</p>');
+	//document.write(strDirection);
+	var thispage = window.location.href; // grab the URL of the current page
+	var newURL = thispage.split("#", 1); // remove any existing search
+	
+
+	if (strArea=="st_kilda" && strDirection=="up") {
+		window.location = (newURL + "#St_Kilda_Up"); // jump to the stop if valid
+	}
+	if (strArea=="St. Kilda") {
+		window.location = (newURL + "#St_Kilda_Up");
+	}
+}
+
+</script>
+</head>
+<body>
+
+<h3>Search:</h3>
+<hr>
+<form>
+<p>Enter Stop ID:<input type="text" id="stopID"></p><input id="searchstopid" type="button" value="Search" onclick="findStopID();" /></p>
+</form>
+<p>Select an area:
+<select id="stopArea">
+	<option value="null">---</option>
+	<option value="st_kilda">St. Kilda</option>
+	<option value="middle_park">Middle Park</option>
+	<option value="south_melbourne">South Melbourne</option>
+	<option value="southbank">Southbank</option>
+	<option value="melbourne_cbd">Melbourne CBD</option>
+	<option value="east_melbourne">East Melbourne</option>
+	<option value="fitzroy">Fitzroy</option>
+	<option value="fitzroy_north">Fitzroy North (To St. Kilda only)</option>
+	<option value="brunswick_east">Brunswick East</option>
+</select>
+Select travel direction:
+<select id="travelDirection">
+	<option value="null">---</option>
+	<option value="up">To East Brunswick</option>
+	<option value="down">To St. Kilda Beach</option>	
+</select>
+<input id="searchstoparea" type="button" value="Search" onclick="findStopArea();">
+<hr>
+<body style="background-color:#c5d64c">
+<!-- begin to East Brunswick -->
+<h3><a id="East">Route 96 to East Brunswick:</a></h3><p><a href="#Kilda">(Change to trams to St. Kilda Beach)</a></p>
+<h4>St Kilda</h4><a id="St_Kilda_Up"><!-- <a id="Saint Kilda"><a id="St. Kilda"><a id="St. Kilda Beach"><a id="St Kilda Beach"> -->
+<hr>
+<a id="1545"><!-- <a id="Barkly St"> -->
+<iframe src="http://webpids.tramtracker.com.au/medium.html?id=1545&rt=96&tp" style="width: 300px; height: 400px"></iframe>
+<a id="1544"><!-- <a id="Belford St"> -->
+<iframe src="http://webpids.tramtracker.com.au/medium.html?id=1544&rt=96&tp" style="width: 300px; height: 400px"></iframe>
+<a id="1543"><!-- <a id="Luna Park"> -->
+<iframe src="http://webpids.tramtracker.com.au/medium.html?id=1543&rt=96&tp" style="width: 300px; height: 400px"></iframe>
+<a id="1541"><!-- <a id="The Esplanade"> -->
+<iframe src="http://webpids.tramtracker.com.au/medium.html?id=1541&rt=96&tp" style="width: 300px; height: 400px"></iframe>
+<a id="1540"><!-- <a id="Jacka Blvd"> -->
+<iframe src="http://webpids.tramtracker.com.au/medium.html?id=1540&rt=96&tp" style="width: 300px; height: 400px"></iframe>
+<a id="1539"><!-- <a id="Park St"> -->
+<iframe src="http://webpids.tramtracker.com.au/medium.html?id=1539&rt=96&tp" style="width: 300px; height: 400px"></iframe>
+<a id="1538"><!-- <a id="Canterbury Rd"> -->
+<iframe src="http://webpids.tramtracker.com.au/medium.html?id=1538&rt=96&tp" style="width: 300px; height: 400px"></iframe>
+<a id="1537"><!--<a id="St Kilda Station"><a id="St. Kilda Station">-->
+<iframe src="http://webpids.tramtracker.com.au/medium.html?id=1537&rt=96&tp" style="width: 300px; height: 400px"></iframe>
+<h4>Middle Park</h4><a id="Middle Park Up">
+<hr>
+<a id="1536"><!-- <a id="Fraser St"> -->
+<iframe src="http://webpids.tramtracker.com.au/medium.html?id=1536&rt=96&tp" style="width: 300px; height: 400px"></iframe>
+<a id="1535">
+<iframe src="http://webpids.tramtracker.com.au/medium.html?id=1535&rt=96&tp" style="width: 300px; height: 400px"></iframe>
+<a id="1534">
+<iframe src="http://webpids.tramtracker.com.au/medium.html?id=1534&rt=96&tp" style="width: 300px; height: 400px"></iframe>
+<h4>South Melbourne</h4><a id="South Melbourne Up">
+<hr>
+<a id="1533">
+<iframe src="http://webpids.tramtracker.com.au/medium.html?id=1533&rt=96&tp" style="width: 300px; height: 400px"></iframe>
+<a id="1532">
+<iframe src="http://webpids.tramtracker.com.au/medium.html?id=1532&rt=96&tp" style="width: 300px; height: 400px"></iframe>
+<a id="1531">
+<iframe src="http://webpids.tramtracker.com.au/medium.html?id=1531&rt=96&tp" style="width: 300px; height: 400px"></iframe>
+<h4>Southbank</h4><a id="Southbank Up">
+<hr>
+<a id="1707">
+<iframe src="http://webpids.tramtracker.com.au/medium.html?id=1707&rt=96&tp" style="width: 300px; height: 400px"></iframe>
+<a id="3357">
+<iframe src="http://webpids.tramtracker.com.au/medium.html?id=3357&rt=96&tp" style="width: 300px; height: 400px"></iframe>
+<h4>Melbourne City</h4><a id="Melbourne CBD Up">
+<hr>
+<a id="3356">
+<iframe src="http://webpids.tramtracker.com.au/medium.html?id=3356&rt=96&tp" style="width: 300px; height: 400px"></iframe>
+<a id="3354">
+<iframe src="http://webpids.tramtracker.com.au/medium.html?id=3354&rt=96&tp" style="width: 300px; height: 400px"></iframe>
+<a id="3301">
+<iframe src="http://webpids.tramtracker.com.au/medium.html?id=3301&rt=96&tp" style="width: 300px; height: 400px"></iframe>
+<a id="3303">
+<iframe src="http://webpids.tramtracker.com.au/medium.html?id=3303&rt=96&tp" style="width: 300px; height: 400px"></iframe>
+<a id="3304">
+<iframe src="http://webpids.tramtracker.com.au/medium.html?id=3304&rt=96&tp" style="width: 300px; height: 400px"></iframe>
+<a id="3305">
+<iframe src="http://webpids.tramtracker.com.au/medium.html?id=3305&rt=96&tp" style="width: 300px; height: 400px"></iframe>
+<a id="3306">
+<iframe src="http://webpids.tramtracker.com.au/medium.html?id=3306&rt=96&tp" style="width: 300px; height: 400px"></iframe>
+<a id="3307">
+<iframe src="http://webpids.tramtracker.com.au/medium.html?id=3307&rt=96&tp" style="width: 300px; height: 400px"></iframe>
+<a id="3309">
+<iframe src="http://webpids.tramtracker.com.au/medium.html?id=3309&rt=96&tp" style="width: 300px; height: 400px"></iframe>
+<h4>East Melbourne</h4><a id="East Melbourne Up">
+<hr>
+<a id="3310">
+<iframe src="http://webpids.tramtracker.com.au/medium.html?id=3310&rt=96&tp" style="width: 300px; height: 400px"></iframe>
+<a id="3311">
+<iframe src="http://webpids.tramtracker.com.au/medium.html?id=3311&rt=96&tp" style="width: 300px; height: 400px"></iframe>
+<h4>Fitzroy</h4><a id="Fitzroy Up">
+<hr>
+<a id="2522">
+<iframe src="http://webpids.tramtracker.com.au/medium.html?id=2522&rt=96&tp" style="width: 300px; height: 400px"></iframe>
+<h4>Brunswick East</h4><a id="Brunswick East Up">
+<hr>
+<a id="2523">
+<iframe src="http://webpids.tramtracker.com.au/medium.html?id=2523&rt=96&tp" style="width: 300px; height: 400px"></iframe>
+<a id="2524">
+<iframe src="http://webpids.tramtracker.com.au/medium.html?id=2524&rt=96&tp" style="width: 300px; height: 400px"></iframe>
+<a id="2525">
+<iframe src="http://webpids.tramtracker.com.au/medium.html?id=2525&rt=96&tp" style="width: 300px; height: 400px"></iframe>
+<a id="2526">
+<iframe src="http://webpids.tramtracker.com.au/medium.html?id=2526&rt=96&tp" style="width: 300px; height: 400px"></iframe>
+<!-- Begin To St. Kilda -->
+<h3><a id="Kilda">Route 96 to St. Kilda Beach</a></h3><a href="#East">(Change to trams to East Brunswick)</a>
+<h4>Brunswick East</h4><a id="Brunswick East Down">
+<hr>
+<a id="1527">
+<iframe src="http://webpids.tramtracker.com.au/medium.html?id=1527&rt=96&tp" style="width: 300px; height: 400px"></iframe>
+<a id="1526">
+<iframe src="http://webpids.tramtracker.com.au/medium.html?id=1526&rt=96&tp" style="width: 300px; height: 400px"></iframe>
+<a id="1525">
+<iframe src="http://webpids.tramtracker.com.au/medium.html?id=1525&rt=96&tp" style="width: 300px; height: 400px"></iframe>
+<h4>Fitzroy North</h4><a id="Fitzroy North Down">
+<hr>
+<a id="1524">
+<iframe src="http://webpids.tramtracker.com.au/medium.html?id=1524&rt=96&tp" style="width: 300px; height: 400px"></iframe>
+<a id="1523">
+<iframe src="http://webpids.tramtracker.com.au/medium.html?id=1523&rt=96&tp" style="width: 300px; height: 400px"></iframe>
+<a id="1522">
+<iframe src="http://webpids.tramtracker.com.au/medium.html?id=1522&rt=96&tp" style="width: 300px; height: 400px"></iframe>
+<a id="1521">
+<iframe src="http://webpids.tramtracker.com.au/medium.html?id=1521&rt=96&tp" style="width: 300px; height: 400px"></iframe>
+<a id="1520">
+<iframe src="http://webpids.tramtracker.com.au/medium.html?id=1520&rt=96&tp" style="width: 300px; height: 400px"></iframe>
+<a id="1519">
+<iframe src="http://webpids.tramtracker.com.au/medium.html?id=1519&rt=96&tp" style="width: 300px; height: 400px"></iframe>
+<a id="1518">
+<iframe src="http://webpids.tramtracker.com.au/medium.html?id=1518&rt=96&tp" style="width: 300px; height: 400px"></iframe>
+<a id="1517">
+<iframe src="http://webpids.tramtracker.com.au/medium.html?id=1517&rt=96&tp" style="width: 300px; height: 400px"></iframe>
+<h4>Fitzroy</h4><a id="Fitzroy Down">
+<hr>
+<a id="1516">
+<iframe src="http://webpids.tramtracker.com.au/medium.html?id=1516&rt=96&tp" style="width: 300px; height: 400px"></iframe>
+<a id="1515">
+<iframe src="http://webpids.tramtracker.com.au/medium.html?id=1515&rt=96&tp" style="width: 300px; height: 400px"></iframe>
+<a id="1514">
+<iframe src="http://webpids.tramtracker.com.au/medium.html?id=1514&rt=96&tp" style="width: 300px; height: 400px"></iframe>
+<a id="1513">
+<iframe src="http://webpids.tramtracker.com.au/medium.html?id=1513&rt=96&tp" style="width: 300px; height: 400px"></iframe>
+<a id="3212">
+<iframe src="http://webpids.tramtracker.com.au/medium.html?id=3212&rt=96&tp" style="width: 300px; height: 400px"></iframe>
+<a id="3211">
+<iframe src="http://webpids.tramtracker.com.au/medium.html?id=3211&rt=96&tp" style="width: 300px; height: 400px"></iframe>
+<a id="3210">
+<iframe src="http://webpids.tramtracker.com.au/medium.html?id=3210&rt=96&tp" style="width: 300px; height: 400px"></iframe>
+<h4>Melbourne City</h4><a id="Melbourne City Down">
+<hr>
+<a id="3209">
+<iframe src="http://webpids.tramtracker.com.au/medium.html?id=3209&rt=96&tp" style="width: 300px; height: 400px"></iframe>
+<a id="3207">
+<iframe src="http://webpids.tramtracker.com.au/medium.html?id=3207&rt=96&tp" style="width: 300px; height: 400px"></iframe>
+<a id="3206">
+<iframe src="http://webpids.tramtracker.com.au/medium.html?id=3206&rt=96&tp" style="width: 300px; height: 400px"></iframe>
+<a id="3205">
+<iframe src="http://webpids.tramtracker.com.au/medium.html?id=3205&rt=96&tp" style="width: 300px; height: 400px"></iframe>
+<a id="3204">
+<iframe src="http://webpids.tramtracker.com.au/medium.html?id=3204&rt=96&tp" style="width: 300px; height: 400px"></iframe>
+<a id="3203">
+<iframe src="http://webpids.tramtracker.com.au/medium.html?id=3203&rt=96&tp" style="width: 300px; height: 400px"></iframe>
+<a id="3201">
+<iframe src="http://webpids.tramtracker.com.au/medium.html?id=3201&rt=96&tp" style="width: 300px; height: 400px"></iframe>
+<a id="3254">
+<iframe src="http://webpids.tramtracker.com.au/medium.html?id=3254&rt=96&tp" style="width: 300px; height: 400px"></iframe>
+<a id="3255">
+<iframe src="http://webpids.tramtracker.com.au/medium.html?id=3255&rt=96&tp" style="width: 300px; height: 400px"></iframe>
+<a id="3256">
+<iframe src="http://webpids.tramtracker.com.au/medium.html?id=3256&rt=96&tp" style="width: 300px; height: 400px"></iframe>
+<h4>Southbank</h4><a id="Southbank Down">
+<hr>
+<a id="3257">
+<iframe src="http://webpids.tramtracker.com.au/medium.html?id=3257&rt=96&tp" style="width: 300px; height: 400px"></iframe>
+<a id="3258">
+<iframe src="http://webpids.tramtracker.com.au/medium.html?id=3258&rt=96&tp" style="width: 300px; height: 400px"></iframe>
+<a id="2707">
+<iframe src="http://webpids.tramtracker.com.au/medium.html?id=2707&rt=96&tp" style="width: 300px; height: 400px"></iframe>
+<h4>South Melbourne</h4><a id="South Melbourne Down">
+<hr>
+<a id="2531">
+<iframe src="http://webpids.tramtracker.com.au/medium.html?id=2531&rt=96&tp" style="width: 300px; height: 400px"></iframe>
+<a id="2532">
+<iframe src="http://webpids.tramtracker.com.au/medium.html?id=2532&rt=96&tp" style="width: 300px; height: 400px"></iframe>
+<a id="2533">
+<iframe src="http://webpids.tramtracker.com.au/medium.html?id=2533&rt=96&tp" style="width: 300px; height: 400px"></iframe>
+<h4>Middle Park</h4><a id="Middle Park Down">
+<hr>
+<a id="2534">
+<iframe src="http://webpids.tramtracker.com.au/medium.html?id=2534&rt=96&tp" style="width: 300px; height: 400px"></iframe>
+<a id="2535">
+<iframe src="http://webpids.tramtracker.com.au/medium.html?id=2535&rt=96&tp" style="width: 300px; height: 400px"></iframe>
+<a id="2536">
+<iframe src="http://webpids.tramtracker.com.au/medium.html?id=2536&rt=96&tp" style="width: 300px; height: 400px"></iframe>
+<h4>St. Kilda</h4><a id="St. Kilda Down">
+<hr>
+<a id="2537">
+<iframe src="http://webpids.tramtracker.com.au/medium.html?id=2537&rt=96&tp" style="width: 300px; height: 400px"></iframe>
+<a id="2538">
+<iframe src="http://webpids.tramtracker.com.au/medium.html?id=2538&rt=96&tp" style="width: 300px; height: 400px"></iframe>
+<a id="2539">
+<iframe src="http://webpids.tramtracker.com.au/medium.html?id=2539&rt=96&tp" style="width: 300px; height: 400px"></iframe>
+<a id="2540">
+<iframe src="http://webpids.tramtracker.com.au/medium.html?id=2540&rt=96&tp" style="width: 300px; height: 400px"></iframe>
+<a id="2541">
+<iframe src="http://webpids.tramtracker.com.au/medium.html?id=2541&rt=96&tp" style="width: 300px; height: 400px"></iframe>
+<a id="2543">
+<iframe src="http://webpids.tramtracker.com.au/medium.html?id=2543&rt=96&tp" style="width: 300px; height: 400px"></iframe>
+<a id="2544">
+<iframe src="http://webpids.tramtracker.com.au/medium.html?id=2544&rt=96&tp" style="width: 300px; height: 400px"></iframe>
+<hr>
+<br />
+<img src="tt.png">
+<p>Powered by WebPID, a tramTRACKER technology.</p>
+<p>tramTRACKER is a registered trademark of Yarra Trams.</p>
+<p>For assistance with tramTRACKER, please contact Yarra Trams <a href="http://yarratrams.com.au">online</a> or by phone on 1800 800 007.</p>
+</div>
+</html>
