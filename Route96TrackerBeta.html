@@ -23,7 +23,7 @@ function findStopArea()
 	var thispage = window.location.href; // grab the URL of the current page
 	var newURL = thispage.split("#", 1); // remove any existing search
 	
-
+	// neither of these currently work, full options to be added after it works
 	if (strArea=="st_kilda" && strDirection=="up") {
 		window.location = (newURL + "#St_Kilda_Up"); // jump to the stop if valid
 	}
@@ -51,7 +51,9 @@ function findStopArea()
 	<option value="melbourne_cbd">Melbourne CBD</option>
 	<option value="east_melbourne">East Melbourne</option>
 	<option value="fitzroy">Fitzroy</option>
-	<option value="fitzroy_north">Fitzroy North (To St. Kilda only)</option>
+	<option value="carlton">Carlton</option>
+	<option value="carlton_north">Carlton North</option>
+	<option value="fitzroy_north">Fitzroy North</option>
 	<option value="brunswick_east">Brunswick East</option>
 </select>
 Select travel direction:
@@ -133,6 +135,36 @@ Select travel direction:
 <iframe src="http://webpids.tramtracker.com.au/medium.html?id=3311&rt=96&tp" style="width: 300px; height: 400px"></iframe>
 <h4>Fitzroy</h4><a id="Fitzroy Up">
 <hr>
+<a id="3312">
+<iframe src="http://webpids.tramtracker.com.au/medium.html?id=3312&rt=96&tp" style="width: 300px; height: 400px"></iframe>
+<a id="2513">
+<iframe src="http://webpids.tramtracker.com.au/medium.html?id=2513&rt=96&tp" style="width: 300px; height: 400px"></iframe>
+<h4>Carlton</h4><a id="Carlton Up">
+<hr>
+<a id="2514">
+<iframe src="http://webpids.tramtracker.com.au/medium.html?id=2514&rt=96&tp" style="width: 300px; height: 400px"></iframe>
+<a id="2515">
+<iframe src="http://webpids.tramtracker.com.au/medium.html?id=2515&rt=96&tp" style="width: 300px; height: 400px"></iframe>
+<a id="2516">
+<iframe src="http://webpids.tramtracker.com.au/medium.html?id=2516&rt=96&tp" style="width: 300px; height: 400px"></iframe>
+<a id="2517">
+<iframe src="http://webpids.tramtracker.com.au/medium.html?id=2517&rt=96&tp" style="width: 300px; height: 400px"></iframe>
+<h4>Carlton North</h4><a id="Carlton North Up">
+<hr>
+<a id="2518">
+<iframe src="http://webpids.tramtracker.com.au/medium.html?id=2518&rt=96&tp" style="width: 300px; height: 400px"></iframe>
+<h4>Fitzroy North</h4><a id="Fitzroy North Up">
+<hr>
+<a id="2519">
+<iframe src="http://webpids.tramtracker.com.au/medium.html?id=2519&rt=96&tp" style="width: 300px; height: 400px"></iframe>
+<h4>Carlton North</h4>
+<hr>
+<a id="2520">
+<iframe src="http://webpids.tramtracker.com.au/medium.html?id=2520&rt=96&tp" style="width: 300px; height: 400px"></iframe>
+<a id="2521">
+<iframe src="http://webpids.tramtracker.com.au/medium.html?id=2521&rt=96&tp" style="width: 300px; height: 400px"></iframe>
+<h4>Fitzroy</h4>
+<hr>
 <a id="2522">
 <iframe src="http://webpids.tramtracker.com.au/medium.html?id=2522&rt=96&tp" style="width: 300px; height: 400px"></iframe>
 <h4>Brunswick East</h4><a id="Brunswick East Up">
@@ -149,6 +181,7 @@ Select travel direction:
 <h3><a id="Kilda">Route 96 to St. Kilda Beach</a></h3><a href="#East">(Change to trams to East Brunswick)</a>
 <h4>Brunswick East</h4><a id="Brunswick East Down">
 <hr>
+<!-- Blyth Street would go here if webPID knew it exsisted -->
 <a id="1527">
 <iframe src="http://webpids.tramtracker.com.au/medium.html?id=1527&rt=96&tp" style="width: 300px; height: 400px"></iframe>
 <a id="1526">
