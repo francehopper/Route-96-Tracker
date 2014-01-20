@@ -1,0 +1,60 @@
+
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+	<title>webPID</title>
+	<link rel="stylesheet" type="text/css" href="http://fhnwrk.com/TramTracker/sandbox/large.css" />
+	<script type="text/javascript" src="http://webpids.tramtracker.com.au/misc/prototype.js"></script>
+	<script type="text/javascript" src="http://webpids.tramtracker.com.au/misc/element-extensions.js"></script>
+	<script type="text/javascript" src="http://webpids.tramtracker.com.au/misc/scriptaculous/scriptaculous.js"></script>
+	<script type="text/javascript" src="http://fhnwrk.com/TramTracker/sandbox/soapclient.js"></script>
+	<script type="text/javascript" src="http://fhnwrk.com/TramTracker/sandbox/pids.js"></script>
+	<script type="text/javascript" src="http://fhnwrk.com/TramTracker/sandbox/tramtracker.js"></script>
+</head>
+<body>
+	<div id="container">
+		<div id="pid">
+			<img class="background" src="http://fhnwrk.com/TramTracker/sandbox/pid.png" />
+			<div id="title">tramTRACKER</div>
+			<div id="subtitle">No stop selected.</div>
+			<div id="trackerid"></div>
+			<div id="stopid"></div>
+			<div id="screencontainer">
+				<div>
+					<img id="screenbackground" src="http://webpids.tramtracker.com.au/misc/large/screen.png" />
+					<table cellpadding="0" cellspacing="0" border="0" id="screen">
+						<tr class="result"><td class="route" id="row1_route"></td><td class="destination" id="row1_destination"></td><td class="icons" id="row1_icons"><img src="http://webpids.tramtracker.com.au/misc/large/disruption.png" class="disrupted" id="row1_disrupted" style="display: none;" /><img src="http://webpids.tramtracker.com.au/misc/large/specialeventicon.png" id="row1_specialevent" class="specialevent" style="display: none;" /><img src="http://webpids.tramtracker.com.au/misc/large/lowfloor.png" id="row1_lowfloor" class="lowfloor" style="display: none;" /><img src="http://webpids.tramtracker.com.au/misc/large/snowflake.png" id="row1_aircon" class="aircon" style="display: none;" /></td><td class="mins" id="row1_arrival"></td></tr>
+						<tr class="result"><td class="route" id="row2_route"></td><td class="destination" id="row2_destination"></td><td class="icons" id="row2_icons"><img src="http://webpids.tramtracker.com.au/misc/large/disruption.png" class="disrupted" id="row2_disrupted" style="display: none;" /><img src="http://webpids.tramtracker.com.au/misc/large/specialeventicon.png" id="row2_specialevent" class="specialevent" style="display: none;" /><img src="http://webpids.tramtracker.com.au/misc/large/lowfloor.png" id="row2_lowfloor" class="lowfloor" style="display: none;" /><img src="http://webpids.tramtracker.com.au/misc/large/snowflake.png" id="row2_aircon" class="aircon" style="display: none;" /></td><td class="mins" id="row2_arrival"></td></tr>
+						<tr class="result"><td class="route" id="row3_route"></td><td class="destination" id="row3_destination"></td><td class="icons" id="row3_icons"><img src="http://webpids.tramtracker.com.au/misc/large/disruption.png" class="disrupted" id="row3_disrupted" style="display: none;" /><img src="http://webpids.tramtracker.com.au/misc/large/specialeventicon.png" id="row3_specialevent" class="specialevent" style="display: none;" /><img src="http://webpids.tramtracker.com.au/misc/large/lowfloor.png" id="row3_lowfloor" class="lowfloor" style="display: none;" /><img src="http://webpids.tramtracker.com.au/misc/large/snowflake.png" id="row3_aircon" class="aircon" style="display: none;" /></td><td class="mins" id="row3_arrival"></td></tr>
+						<tr><td id="time" class="paused" colspan="4"></td></tr>
+					</table>
+				</div>				
+			</div>
+			<div id="specialevent" style="display: none;">
+				<div>
+					<img id="specialeventbackground" src="http://webpids.tramtracker.com.au/misc/large/specialevent_screen.png" />
+					<div id="specialeventheader">Special Event</div>
+					<div id="specialeventmessage"></div>
+				</div>
+			</div>
+			<div id="error" style="display: none;">
+				<div>
+					<img id="errorbackground" src="http://webpids.tramtracker.com.au/misc/large/blank_screen.png" />
+					<div id="errorheader">An Error Has Occured</div>
+					<div id="errormessage"></div>
+				</div>
+			</div>
+			<div id="disruption" style="display: none;">
+				<div>
+					<img id="disruptionbackground" src="http://webpids.tramtracker.com.au/misc/large/disruption_screen.png" />
+					<div id="disruptionheader">Disruption</div>
+					<div id="disruptionmessage"></div>
+				</div>
+			</div>
+			<div id="loading" style="display: none;">Loading...</div>
+			<div id="filterinfo" style="display: none;">Showing: <img src="http://webpids.tramtracker.com.au/misc/large/lowfloor.png" id="lowfloor_filter" style="display: none;" /></div><div id="route_filter" style="display: none;"></div>
+		</div>
+	</div>
+</body>
+</html>

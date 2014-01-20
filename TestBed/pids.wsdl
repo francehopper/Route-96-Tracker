@@ -1,0 +1,1546 @@
+
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://www.yarratrams.com.au/pidsservice/" xmlns:s1="http://microsoft.com/wsdl/types/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" targetNamespace="http://www.yarratrams.com.au/pidsservice/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">&lt;table style='width:80%;' cellpadding='10'&gt;&lt;tr&gt;&lt;td&gt;&lt;img alt='tramTRACKER&amp;reg' src='./images/tramTRACKER.jpg' /&gt;&lt;/td&gt;&lt;td&gt;&lt;p&gt;tramTRACKER&lt;sup&gt;&amp;reg&lt;/sup&gt; PIDS Web Service is a public Web Service that provides a set of Web Methods to request real-time and scheduled tram arrival times, as well as stops and routes information.&lt;/p&gt;&lt;p&gt;By using this Web Service, you accept and agree to be bound by the tramTRACKER&lt;sup&gt;&amp;reg&lt;/sup&gt; PIDS Web Service terms &amp; conditions. The latest copy of the terms and conditions can be found &lt;a href='Terms.aspx'&gt;here&lt;/a&gt;.&lt;/p&gt;&lt;p&gt;You can keep yourself informed on the latest changes to the service by subscribing to our RSS feeds &lt;a href='updates.xml'&gt;here&lt;/a&gt;.&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan='2'&gt;&lt;b&gt;How to Use&lt;/b&gt;&lt;br /&gt;&lt;p&gt;Each Web method call requires a valid SOAP Header to be included in the SOAP Message.Otherwise, the request will be denied.&lt;/p&gt;A SOAP Header consists of the following information:&lt;br /&gt;&lt;table style='width: 100%;' cellpadding='4'&gt;&lt;tr&gt;&lt;td style='width: 20%; font-weight: bold;'&gt;ClientGuid&lt;/td&gt;&lt;td style='width: 80%;'&gt;Each instance of a client application needs a unique GUID.&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td style='width: 20%; font-weight: bold;'&gt;ClientType&lt;/td&gt;&lt;td style='width: 80%;'&gt;The client application type. If you are developing an application and would like adedicated client type, please send your request to:&lt;br /&gt;feedback&lt;img src='./images/sign.gif' /&gt;yarratrams.com.au.&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td style='width: 20%; font-weight: bold;'&gt;ClientVersion&lt;/td&gt;&lt;td style='width: 80%;'&gt;The version of the client application. The version format has to match the following regular expression: &lt;br/&gt;"&lt;i&gt;^(\d{1,3})(\.\d{1,3})?(\.\d{1,3})?(\.\d{1,5})?$&lt;/i&gt;".&lt;br/&gt;&lt;br/&gt; For example, 1.0, 1.0.0 or 1.0.0.0 &lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td style='width: 20%; font-weight: bold;'&gt;ClientWebServiceVersion&lt;/td&gt;&lt;td style='width: 80%;'&gt;The current Web Service version that the client application is connecting to. The version format has to match the following expression: &lt;br/&gt;"&lt;i&gt;^(\d{1,3}\.)(\d{1,3}\.)(\d{1,3}\.)(\d{1,5})$&lt;/i&gt;". &lt;br/&gt;&lt;br/&gt;For example: 1.0.0.0&lt;br/&gt;&lt;br /&gt;The current Web Service version is 6.4.0.0&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;br /&gt;&lt;br /&gt;</wsdl:documentation>
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://www.yarratrams.com.au/pidsservice/">
+      <s:import namespace="http://microsoft.com/wsdl/types/" />
+      <s:element name="TestGetDestinationsForRoute">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="routeNo" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="TestGetDestinationsForRouteResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="TestGetDestinationsForRouteResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any minOccurs="0" maxOccurs="unbounded" namespace="http://www.w3.org/2001/XMLSchema" processContents="lax" />
+                  <s:any minOccurs="1" namespace="urn:schemas-microsoft-com:xml-diffgram-v1" processContents="lax" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="TestGetDestinationsForAllRoutes">
+        <s:complexType />
+      </s:element>
+      <s:element name="TestGetDestinationsForAllRoutesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="TestGetDestinationsForAllRoutesResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any minOccurs="0" maxOccurs="unbounded" namespace="http://www.w3.org/2001/XMLSchema" processContents="lax" />
+                  <s:any minOccurs="1" namespace="urn:schemas-microsoft-com:xml-diffgram-v1" processContents="lax" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="TestGetListOfStopsByRouteNoAndDirection">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="routeNo" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="isUpDirection" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="TestGetListOfStopsByRouteNoAndDirectionResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="TestGetListOfStopsByRouteNoAndDirectionResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any minOccurs="0" maxOccurs="unbounded" namespace="http://www.w3.org/2001/XMLSchema" processContents="lax" />
+                  <s:any minOccurs="1" namespace="urn:schemas-microsoft-com:xml-diffgram-v1" processContents="lax" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="TestGetPlatformStopsByRouteAndDirection">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="routeNo" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="isUpDirection" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="TestGetPlatformStopsByRouteAndDirectionResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="TestGetPlatformStopsByRouteAndDirectionResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any minOccurs="0" maxOccurs="unbounded" namespace="http://www.w3.org/2001/XMLSchema" processContents="lax" />
+                  <s:any minOccurs="1" namespace="urn:schemas-microsoft-com:xml-diffgram-v1" processContents="lax" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="TestGetRouteStopsByRoute">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="routeNo" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="TestGetRouteStopsByRouteResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="TestGetRouteStopsByRouteResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any minOccurs="0" maxOccurs="unbounded" namespace="http://www.w3.org/2001/XMLSchema" processContents="lax" />
+                  <s:any minOccurs="1" namespace="urn:schemas-microsoft-com:xml-diffgram-v1" processContents="lax" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="TestGetMainRoutes">
+        <s:complexType />
+      </s:element>
+      <s:element name="TestGetMainRoutesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="TestGetMainRoutesResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any minOccurs="0" maxOccurs="unbounded" namespace="http://www.w3.org/2001/XMLSchema" processContents="lax" />
+                  <s:any minOccurs="1" namespace="urn:schemas-microsoft-com:xml-diffgram-v1" processContents="lax" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="TestGetRouteSummaries">
+        <s:complexType />
+      </s:element>
+      <s:element name="TestGetRouteSummariesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="TestGetRouteSummariesResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any minOccurs="0" maxOccurs="unbounded" namespace="http://www.w3.org/2001/XMLSchema" processContents="lax" />
+                  <s:any minOccurs="1" namespace="urn:schemas-microsoft-com:xml-diffgram-v1" processContents="lax" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="TestGetMainRoutesForStop">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="stopNo" type="s:short" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="TestGetMainRoutesForStopResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="TestGetMainRoutesForStopResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any minOccurs="0" maxOccurs="unbounded" namespace="http://www.w3.org/2001/XMLSchema" processContents="lax" />
+                  <s:any minOccurs="1" namespace="urn:schemas-microsoft-com:xml-diffgram-v1" processContents="lax" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="TestGetNextPredictedArrivalTimeAtStopsForTramNo">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="tramNo" type="s:short" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="TestGetNextPredictedArrivalTimeAtStopsForTramNoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="TestGetNextPredictedArrivalTimeAtStopsForTramNoResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="TestGetNextPredictedRoutesCollection">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="stopNo" type="s:short" />
+            <s:element minOccurs="0" maxOccurs="1" name="routeNo" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="lowFloor" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="TestGetNextPredictedRoutesCollectionResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="TestGetNextPredictedRoutesCollectionResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any minOccurs="0" maxOccurs="unbounded" namespace="http://www.w3.org/2001/XMLSchema" processContents="lax" />
+                  <s:any minOccurs="1" namespace="urn:schemas-microsoft-com:xml-diffgram-v1" processContents="lax" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="TestGetSchedulesCollection">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="stopNo" type="s:short" />
+            <s:element minOccurs="0" maxOccurs="1" name="routeNo" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="dateTime" type="s:dateTime" />
+            <s:element minOccurs="1" maxOccurs="1" name="lowFloor" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="TestGetSchedulesCollectionResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="TestGetSchedulesCollectionResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any minOccurs="0" maxOccurs="unbounded" namespace="http://www.w3.org/2001/XMLSchema" processContents="lax" />
+                  <s:any minOccurs="1" namespace="urn:schemas-microsoft-com:xml-diffgram-v1" processContents="lax" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="TestGetSchedulesForTrip">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="tripID" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="scheduledDateTime" type="s:dateTime" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="TestGetSchedulesForTripResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="TestGetSchedulesForTripResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any minOccurs="0" maxOccurs="unbounded" namespace="http://www.w3.org/2001/XMLSchema" processContents="lax" />
+                  <s:any minOccurs="1" namespace="urn:schemas-microsoft-com:xml-diffgram-v1" processContents="lax" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="TestGetStopInformation">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="stopNo" type="s:short" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="TestGetStopInformationResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="TestGetStopInformationResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any minOccurs="0" maxOccurs="unbounded" namespace="http://www.w3.org/2001/XMLSchema" processContents="lax" />
+                  <s:any minOccurs="1" namespace="urn:schemas-microsoft-com:xml-diffgram-v1" processContents="lax" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="TestGetStopsAndRoutesUpdatesSince">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="dateSince" type="s:dateTime" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="TestGetStopsAndRoutesUpdatesSinceResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="TestGetStopsAndRoutesUpdatesSinceResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetNextPredictedRoutesCollection">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="stopNo" type="s:short" />
+            <s:element minOccurs="0" maxOccurs="1" name="routeNo" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="lowFloor" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetNextPredictedRoutesCollectionResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetNextPredictedRoutesCollectionResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any minOccurs="0" maxOccurs="unbounded" namespace="http://www.w3.org/2001/XMLSchema" processContents="lax" />
+                  <s:any minOccurs="1" namespace="urn:schemas-microsoft-com:xml-diffgram-v1" processContents="lax" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+            <s:element minOccurs="0" maxOccurs="1" name="validationResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="PidsClientHeader" type="tns:PidsClientHeader" />
+      <s:complexType name="PidsClientHeader">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="ClientGuid" type="s1:guid" />
+          <s:element minOccurs="0" maxOccurs="1" name="ClientType" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ClientVersion" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ClientWebServiceVersion" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="OSVersion" type="s:string" />
+        </s:sequence>
+        <s:anyAttribute />
+      </s:complexType>
+      <s:element name="GetSchedulesCollection">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="stopNo" type="s:short" />
+            <s:element minOccurs="0" maxOccurs="1" name="routeNo" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="lowFloor" type="s:boolean" />
+            <s:element minOccurs="1" maxOccurs="1" name="clientRequestDateTime" type="s:dateTime" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetSchedulesCollectionResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetSchedulesCollectionResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any minOccurs="0" maxOccurs="unbounded" namespace="http://www.w3.org/2001/XMLSchema" processContents="lax" />
+                  <s:any minOccurs="1" namespace="urn:schemas-microsoft-com:xml-diffgram-v1" processContents="lax" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+            <s:element minOccurs="0" maxOccurs="1" name="validationResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetSchedulesForTrip">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="tripID" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="scheduledDateTime" type="s:dateTime" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetSchedulesForTripResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetSchedulesForTripResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any minOccurs="0" maxOccurs="unbounded" namespace="http://www.w3.org/2001/XMLSchema" processContents="lax" />
+                  <s:any minOccurs="1" namespace="urn:schemas-microsoft-com:xml-diffgram-v1" processContents="lax" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+            <s:element minOccurs="0" maxOccurs="1" name="validationResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetNextPredictedArrivalTimeAtStopsForTramNo">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="tramNo" type="s:short" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetNextPredictedArrivalTimeAtStopsForTramNoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetNextPredictedArrivalTimeAtStopsForTramNoResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+            <s:element minOccurs="0" maxOccurs="1" name="validationResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetDestinationsForAllRoutes">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetDestinationsForAllRoutesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetDestinationsForAllRoutesResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any minOccurs="0" maxOccurs="unbounded" namespace="http://www.w3.org/2001/XMLSchema" processContents="lax" />
+                  <s:any minOccurs="1" namespace="urn:schemas-microsoft-com:xml-diffgram-v1" processContents="lax" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+            <s:element minOccurs="0" maxOccurs="1" name="validationResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetStopInformation">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="stopNo" type="s:short" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetStopInformationResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetStopInformationResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any minOccurs="0" maxOccurs="unbounded" namespace="http://www.w3.org/2001/XMLSchema" processContents="lax" />
+                  <s:any minOccurs="1" namespace="urn:schemas-microsoft-com:xml-diffgram-v1" processContents="lax" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+            <s:element minOccurs="0" maxOccurs="1" name="validationResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetMainRoutesForStop">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="stopNo" type="s:short" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetMainRoutesForStopResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetMainRoutesForStopResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any minOccurs="0" maxOccurs="unbounded" namespace="http://www.w3.org/2001/XMLSchema" processContents="lax" />
+                  <s:any minOccurs="1" namespace="urn:schemas-microsoft-com:xml-diffgram-v1" processContents="lax" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+            <s:element minOccurs="0" maxOccurs="1" name="validationResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetMainRoutes">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetMainRoutesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetMainRoutesResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any minOccurs="0" maxOccurs="unbounded" namespace="http://www.w3.org/2001/XMLSchema" processContents="lax" />
+                  <s:any minOccurs="1" namespace="urn:schemas-microsoft-com:xml-diffgram-v1" processContents="lax" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+            <s:element minOccurs="0" maxOccurs="1" name="validationResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetRouteSummaries">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetRouteSummariesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetRouteSummariesResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any minOccurs="0" maxOccurs="unbounded" namespace="http://www.w3.org/2001/XMLSchema" processContents="lax" />
+                  <s:any minOccurs="1" namespace="urn:schemas-microsoft-com:xml-diffgram-v1" processContents="lax" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+            <s:element minOccurs="0" maxOccurs="1" name="validationResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetDestinationsForRoute">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="routeNo" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetDestinationsForRouteResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetDestinationsForRouteResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any minOccurs="0" maxOccurs="unbounded" namespace="http://www.w3.org/2001/XMLSchema" processContents="lax" />
+                  <s:any minOccurs="1" namespace="urn:schemas-microsoft-com:xml-diffgram-v1" processContents="lax" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+            <s:element minOccurs="0" maxOccurs="1" name="validationResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetListOfStopsByRouteNoAndDirection">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="routeNo" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="isUpDirection" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetListOfStopsByRouteNoAndDirectionResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetListOfStopsByRouteNoAndDirectionResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any minOccurs="0" maxOccurs="unbounded" namespace="http://www.w3.org/2001/XMLSchema" processContents="lax" />
+                  <s:any minOccurs="1" namespace="urn:schemas-microsoft-com:xml-diffgram-v1" processContents="lax" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+            <s:element minOccurs="0" maxOccurs="1" name="validationResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetPlatformStopsByRouteAndDirection">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="routeNo" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="isUpDirection" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetPlatformStopsByRouteAndDirectionResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetPlatformStopsByRouteAndDirectionResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any minOccurs="0" maxOccurs="unbounded" namespace="http://www.w3.org/2001/XMLSchema" processContents="lax" />
+                  <s:any minOccurs="1" namespace="urn:schemas-microsoft-com:xml-diffgram-v1" processContents="lax" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+            <s:element minOccurs="0" maxOccurs="1" name="validationResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetRouteStopsByRoute">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="routeNo" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetRouteStopsByRouteResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetRouteStopsByRouteResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any minOccurs="0" maxOccurs="unbounded" namespace="http://www.w3.org/2001/XMLSchema" processContents="lax" />
+                  <s:any minOccurs="1" namespace="urn:schemas-microsoft-com:xml-diffgram-v1" processContents="lax" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+            <s:element minOccurs="0" maxOccurs="1" name="validationResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetStopsAndRoutesUpdatesSince">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="dateSince" type="s:dateTime" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetStopsAndRoutesUpdatesSinceResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetStopsAndRoutesUpdatesSinceResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+            <s:element minOccurs="0" maxOccurs="1" name="validationResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetNewClientGuid">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetNewClientGuidResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="GetNewClientGuidResult" type="s1:guid" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://microsoft.com/wsdl/types/">
+      <s:simpleType name="guid">
+        <s:restriction base="s:string">
+          <s:pattern value="[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}" />
+        </s:restriction>
+      </s:simpleType>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="TestGetDestinationsForRouteSoapIn">
+    <wsdl:part name="parameters" element="tns:TestGetDestinationsForRoute" />
+  </wsdl:message>
+  <wsdl:message name="TestGetDestinationsForRouteSoapOut">
+    <wsdl:part name="parameters" element="tns:TestGetDestinationsForRouteResponse" />
+  </wsdl:message>
+  <wsdl:message name="TestGetDestinationsForAllRoutesSoapIn">
+    <wsdl:part name="parameters" element="tns:TestGetDestinationsForAllRoutes" />
+  </wsdl:message>
+  <wsdl:message name="TestGetDestinationsForAllRoutesSoapOut">
+    <wsdl:part name="parameters" element="tns:TestGetDestinationsForAllRoutesResponse" />
+  </wsdl:message>
+  <wsdl:message name="TestGetListOfStopsByRouteNoAndDirectionSoapIn">
+    <wsdl:part name="parameters" element="tns:TestGetListOfStopsByRouteNoAndDirection" />
+  </wsdl:message>
+  <wsdl:message name="TestGetListOfStopsByRouteNoAndDirectionSoapOut">
+    <wsdl:part name="parameters" element="tns:TestGetListOfStopsByRouteNoAndDirectionResponse" />
+  </wsdl:message>
+  <wsdl:message name="TestGetPlatformStopsByRouteAndDirectionSoapIn">
+    <wsdl:part name="parameters" element="tns:TestGetPlatformStopsByRouteAndDirection" />
+  </wsdl:message>
+  <wsdl:message name="TestGetPlatformStopsByRouteAndDirectionSoapOut">
+    <wsdl:part name="parameters" element="tns:TestGetPlatformStopsByRouteAndDirectionResponse" />
+  </wsdl:message>
+  <wsdl:message name="TestGetRouteStopsByRouteSoapIn">
+    <wsdl:part name="parameters" element="tns:TestGetRouteStopsByRoute" />
+  </wsdl:message>
+  <wsdl:message name="TestGetRouteStopsByRouteSoapOut">
+    <wsdl:part name="parameters" element="tns:TestGetRouteStopsByRouteResponse" />
+  </wsdl:message>
+  <wsdl:message name="TestGetMainRoutesSoapIn">
+    <wsdl:part name="parameters" element="tns:TestGetMainRoutes" />
+  </wsdl:message>
+  <wsdl:message name="TestGetMainRoutesSoapOut">
+    <wsdl:part name="parameters" element="tns:TestGetMainRoutesResponse" />
+  </wsdl:message>
+  <wsdl:message name="TestGetRouteSummariesSoapIn">
+    <wsdl:part name="parameters" element="tns:TestGetRouteSummaries" />
+  </wsdl:message>
+  <wsdl:message name="TestGetRouteSummariesSoapOut">
+    <wsdl:part name="parameters" element="tns:TestGetRouteSummariesResponse" />
+  </wsdl:message>
+  <wsdl:message name="TestGetMainRoutesForStopSoapIn">
+    <wsdl:part name="parameters" element="tns:TestGetMainRoutesForStop" />
+  </wsdl:message>
+  <wsdl:message name="TestGetMainRoutesForStopSoapOut">
+    <wsdl:part name="parameters" element="tns:TestGetMainRoutesForStopResponse" />
+  </wsdl:message>
+  <wsdl:message name="TestGetNextPredictedArrivalTimeAtStopsForTramNoSoapIn">
+    <wsdl:part name="parameters" element="tns:TestGetNextPredictedArrivalTimeAtStopsForTramNo" />
+  </wsdl:message>
+  <wsdl:message name="TestGetNextPredictedArrivalTimeAtStopsForTramNoSoapOut">
+    <wsdl:part name="parameters" element="tns:TestGetNextPredictedArrivalTimeAtStopsForTramNoResponse" />
+  </wsdl:message>
+  <wsdl:message name="TestGetNextPredictedRoutesCollectionSoapIn">
+    <wsdl:part name="parameters" element="tns:TestGetNextPredictedRoutesCollection" />
+  </wsdl:message>
+  <wsdl:message name="TestGetNextPredictedRoutesCollectionSoapOut">
+    <wsdl:part name="parameters" element="tns:TestGetNextPredictedRoutesCollectionResponse" />
+  </wsdl:message>
+  <wsdl:message name="TestGetSchedulesCollectionSoapIn">
+    <wsdl:part name="parameters" element="tns:TestGetSchedulesCollection" />
+  </wsdl:message>
+  <wsdl:message name="TestGetSchedulesCollectionSoapOut">
+    <wsdl:part name="parameters" element="tns:TestGetSchedulesCollectionResponse" />
+  </wsdl:message>
+  <wsdl:message name="TestGetSchedulesForTripSoapIn">
+    <wsdl:part name="parameters" element="tns:TestGetSchedulesForTrip" />
+  </wsdl:message>
+  <wsdl:message name="TestGetSchedulesForTripSoapOut">
+    <wsdl:part name="parameters" element="tns:TestGetSchedulesForTripResponse" />
+  </wsdl:message>
+  <wsdl:message name="TestGetStopInformationSoapIn">
+    <wsdl:part name="parameters" element="tns:TestGetStopInformation" />
+  </wsdl:message>
+  <wsdl:message name="TestGetStopInformationSoapOut">
+    <wsdl:part name="parameters" element="tns:TestGetStopInformationResponse" />
+  </wsdl:message>
+  <wsdl:message name="TestGetStopsAndRoutesUpdatesSinceSoapIn">
+    <wsdl:part name="parameters" element="tns:TestGetStopsAndRoutesUpdatesSince" />
+  </wsdl:message>
+  <wsdl:message name="TestGetStopsAndRoutesUpdatesSinceSoapOut">
+    <wsdl:part name="parameters" element="tns:TestGetStopsAndRoutesUpdatesSinceResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetNextPredictedRoutesCollectionSoapIn">
+    <wsdl:part name="parameters" element="tns:GetNextPredictedRoutesCollection" />
+  </wsdl:message>
+  <wsdl:message name="GetNextPredictedRoutesCollectionSoapOut">
+    <wsdl:part name="parameters" element="tns:GetNextPredictedRoutesCollectionResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetNextPredictedRoutesCollectionPidsClientHeader">
+    <wsdl:part name="PidsClientHeader" element="tns:PidsClientHeader" />
+  </wsdl:message>
+  <wsdl:message name="GetSchedulesCollectionSoapIn">
+    <wsdl:part name="parameters" element="tns:GetSchedulesCollection" />
+  </wsdl:message>
+  <wsdl:message name="GetSchedulesCollectionSoapOut">
+    <wsdl:part name="parameters" element="tns:GetSchedulesCollectionResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetSchedulesCollectionPidsClientHeader">
+    <wsdl:part name="PidsClientHeader" element="tns:PidsClientHeader" />
+  </wsdl:message>
+  <wsdl:message name="GetSchedulesForTripSoapIn">
+    <wsdl:part name="parameters" element="tns:GetSchedulesForTrip" />
+  </wsdl:message>
+  <wsdl:message name="GetSchedulesForTripSoapOut">
+    <wsdl:part name="parameters" element="tns:GetSchedulesForTripResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetSchedulesForTripPidsClientHeader">
+    <wsdl:part name="PidsClientHeader" element="tns:PidsClientHeader" />
+  </wsdl:message>
+  <wsdl:message name="GetNextPredictedArrivalTimeAtStopsForTramNoSoapIn">
+    <wsdl:part name="parameters" element="tns:GetNextPredictedArrivalTimeAtStopsForTramNo" />
+  </wsdl:message>
+  <wsdl:message name="GetNextPredictedArrivalTimeAtStopsForTramNoSoapOut">
+    <wsdl:part name="parameters" element="tns:GetNextPredictedArrivalTimeAtStopsForTramNoResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetNextPredictedArrivalTimeAtStopsForTramNoPidsClientHeader">
+    <wsdl:part name="PidsClientHeader" element="tns:PidsClientHeader" />
+  </wsdl:message>
+  <wsdl:message name="GetDestinationsForAllRoutesSoapIn">
+    <wsdl:part name="parameters" element="tns:GetDestinationsForAllRoutes" />
+  </wsdl:message>
+  <wsdl:message name="GetDestinationsForAllRoutesSoapOut">
+    <wsdl:part name="parameters" element="tns:GetDestinationsForAllRoutesResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetDestinationsForAllRoutesPidsClientHeader">
+    <wsdl:part name="PidsClientHeader" element="tns:PidsClientHeader" />
+  </wsdl:message>
+  <wsdl:message name="GetStopInformationSoapIn">
+    <wsdl:part name="parameters" element="tns:GetStopInformation" />
+  </wsdl:message>
+  <wsdl:message name="GetStopInformationSoapOut">
+    <wsdl:part name="parameters" element="tns:GetStopInformationResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetStopInformationPidsClientHeader">
+    <wsdl:part name="PidsClientHeader" element="tns:PidsClientHeader" />
+  </wsdl:message>
+  <wsdl:message name="GetMainRoutesForStopSoapIn">
+    <wsdl:part name="parameters" element="tns:GetMainRoutesForStop" />
+  </wsdl:message>
+  <wsdl:message name="GetMainRoutesForStopSoapOut">
+    <wsdl:part name="parameters" element="tns:GetMainRoutesForStopResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetMainRoutesForStopPidsClientHeader">
+    <wsdl:part name="PidsClientHeader" element="tns:PidsClientHeader" />
+  </wsdl:message>
+  <wsdl:message name="GetMainRoutesSoapIn">
+    <wsdl:part name="parameters" element="tns:GetMainRoutes" />
+  </wsdl:message>
+  <wsdl:message name="GetMainRoutesSoapOut">
+    <wsdl:part name="parameters" element="tns:GetMainRoutesResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetMainRoutesPidsClientHeader">
+    <wsdl:part name="PidsClientHeader" element="tns:PidsClientHeader" />
+  </wsdl:message>
+  <wsdl:message name="GetRouteSummariesSoapIn">
+    <wsdl:part name="parameters" element="tns:GetRouteSummaries" />
+  </wsdl:message>
+  <wsdl:message name="GetRouteSummariesSoapOut">
+    <wsdl:part name="parameters" element="tns:GetRouteSummariesResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetRouteSummariesPidsClientHeader">
+    <wsdl:part name="PidsClientHeader" element="tns:PidsClientHeader" />
+  </wsdl:message>
+  <wsdl:message name="GetDestinationsForRouteSoapIn">
+    <wsdl:part name="parameters" element="tns:GetDestinationsForRoute" />
+  </wsdl:message>
+  <wsdl:message name="GetDestinationsForRouteSoapOut">
+    <wsdl:part name="parameters" element="tns:GetDestinationsForRouteResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetDestinationsForRoutePidsClientHeader">
+    <wsdl:part name="PidsClientHeader" element="tns:PidsClientHeader" />
+  </wsdl:message>
+  <wsdl:message name="GetListOfStopsByRouteNoAndDirectionSoapIn">
+    <wsdl:part name="parameters" element="tns:GetListOfStopsByRouteNoAndDirection" />
+  </wsdl:message>
+  <wsdl:message name="GetListOfStopsByRouteNoAndDirectionSoapOut">
+    <wsdl:part name="parameters" element="tns:GetListOfStopsByRouteNoAndDirectionResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetListOfStopsByRouteNoAndDirectionPidsClientHeader">
+    <wsdl:part name="PidsClientHeader" element="tns:PidsClientHeader" />
+  </wsdl:message>
+  <wsdl:message name="GetPlatformStopsByRouteAndDirectionSoapIn">
+    <wsdl:part name="parameters" element="tns:GetPlatformStopsByRouteAndDirection" />
+  </wsdl:message>
+  <wsdl:message name="GetPlatformStopsByRouteAndDirectionSoapOut">
+    <wsdl:part name="parameters" element="tns:GetPlatformStopsByRouteAndDirectionResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetPlatformStopsByRouteAndDirectionPidsClientHeader">
+    <wsdl:part name="PidsClientHeader" element="tns:PidsClientHeader" />
+  </wsdl:message>
+  <wsdl:message name="GetRouteStopsByRouteSoapIn">
+    <wsdl:part name="parameters" element="tns:GetRouteStopsByRoute" />
+  </wsdl:message>
+  <wsdl:message name="GetRouteStopsByRouteSoapOut">
+    <wsdl:part name="parameters" element="tns:GetRouteStopsByRouteResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetRouteStopsByRoutePidsClientHeader">
+    <wsdl:part name="PidsClientHeader" element="tns:PidsClientHeader" />
+  </wsdl:message>
+  <wsdl:message name="GetStopsAndRoutesUpdatesSinceSoapIn">
+    <wsdl:part name="parameters" element="tns:GetStopsAndRoutesUpdatesSince" />
+  </wsdl:message>
+  <wsdl:message name="GetStopsAndRoutesUpdatesSinceSoapOut">
+    <wsdl:part name="parameters" element="tns:GetStopsAndRoutesUpdatesSinceResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetStopsAndRoutesUpdatesSincePidsClientHeader">
+    <wsdl:part name="PidsClientHeader" element="tns:PidsClientHeader" />
+  </wsdl:message>
+  <wsdl:message name="GetNewClientGuidSoapIn">
+    <wsdl:part name="parameters" element="tns:GetNewClientGuid" />
+  </wsdl:message>
+  <wsdl:message name="GetNewClientGuidSoapOut">
+    <wsdl:part name="parameters" element="tns:GetNewClientGuidResponse" />
+  </wsdl:message>
+  <wsdl:portType name="tramTRACKER_x0020_PIDS_x0020_Web_x0020_ServiceSoap">
+    <wsdl:operation name="TestGetDestinationsForRoute">
+      <wsdl:input message="tns:TestGetDestinationsForRouteSoapIn" />
+      <wsdl:output message="tns:TestGetDestinationsForRouteSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="TestGetDestinationsForAllRoutes">
+      <wsdl:input message="tns:TestGetDestinationsForAllRoutesSoapIn" />
+      <wsdl:output message="tns:TestGetDestinationsForAllRoutesSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="TestGetListOfStopsByRouteNoAndDirection">
+      <wsdl:input message="tns:TestGetListOfStopsByRouteNoAndDirectionSoapIn" />
+      <wsdl:output message="tns:TestGetListOfStopsByRouteNoAndDirectionSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="TestGetPlatformStopsByRouteAndDirection">
+      <wsdl:input message="tns:TestGetPlatformStopsByRouteAndDirectionSoapIn" />
+      <wsdl:output message="tns:TestGetPlatformStopsByRouteAndDirectionSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="TestGetRouteStopsByRoute">
+      <wsdl:input message="tns:TestGetRouteStopsByRouteSoapIn" />
+      <wsdl:output message="tns:TestGetRouteStopsByRouteSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="TestGetMainRoutes">
+      <wsdl:input message="tns:TestGetMainRoutesSoapIn" />
+      <wsdl:output message="tns:TestGetMainRoutesSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="TestGetRouteSummaries">
+      <wsdl:input message="tns:TestGetRouteSummariesSoapIn" />
+      <wsdl:output message="tns:TestGetRouteSummariesSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="TestGetMainRoutesForStop">
+      <wsdl:input message="tns:TestGetMainRoutesForStopSoapIn" />
+      <wsdl:output message="tns:TestGetMainRoutesForStopSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="TestGetNextPredictedArrivalTimeAtStopsForTramNo">
+      <wsdl:input message="tns:TestGetNextPredictedArrivalTimeAtStopsForTramNoSoapIn" />
+      <wsdl:output message="tns:TestGetNextPredictedArrivalTimeAtStopsForTramNoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="TestGetNextPredictedRoutesCollection">
+      <wsdl:input message="tns:TestGetNextPredictedRoutesCollectionSoapIn" />
+      <wsdl:output message="tns:TestGetNextPredictedRoutesCollectionSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="TestGetSchedulesCollection">
+      <wsdl:input message="tns:TestGetSchedulesCollectionSoapIn" />
+      <wsdl:output message="tns:TestGetSchedulesCollectionSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="TestGetSchedulesForTrip">
+      <wsdl:input message="tns:TestGetSchedulesForTripSoapIn" />
+      <wsdl:output message="tns:TestGetSchedulesForTripSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="TestGetStopInformation">
+      <wsdl:input message="tns:TestGetStopInformationSoapIn" />
+      <wsdl:output message="tns:TestGetStopInformationSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="TestGetStopsAndRoutesUpdatesSince">
+      <wsdl:input message="tns:TestGetStopsAndRoutesUpdatesSinceSoapIn" />
+      <wsdl:output message="tns:TestGetStopsAndRoutesUpdatesSinceSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetNextPredictedRoutesCollection">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Returns real-time predicted arrival times for the specified Tracker Stop ID, route number, and low floor requirement.&lt;br/&gt;&lt;br/&gt;&lt;table width='100%' cellpadding='4'&gt;&lt;tr style='font-weight: bold; color: black; background: #e8e8e8'&gt;&lt;td&gt;Parameters&lt;/td&gt;&lt;td&gt;Description&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td style='font-weight: bold;'&gt;stopNo&lt;/td&gt;&lt;td style='width: 85%;'&gt;Type: short. The 4-digit Tracker ID of the stop.&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td style='font-weight: bold;'&gt;routeNo&lt;/td&gt;&lt;td style='width: 85%;'&gt;Type: string. Specify the route number to filter the results to a particular route number, or specify &lt;i&gt;0&lt;/i&gt; (zero) to retrieve results for all routes that pass the stop. A route number is 1 to 3-digit followed by 0 or 1 alphabet.&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td style='font-weight: bold;'&gt;lowFloor&lt;/td&gt;&lt;td style='width: 85%;'&gt;Type: boolean. Specify &lt;i&gt;true&lt;/i&gt; to retrieve low floor only results, or &lt;i&gt;false&lt;/i&gt; to retrieve low floor and non low floor results.&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;validationResult&lt;/b&gt; (&lt;i&gt;out&lt;/i&gt;)&lt;/td&gt;&lt;td style='width: 85%;'&gt;Type: string. An out parameter that holds any validation message from the service. Validation may be ignored if result exists.&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;br/&gt;</wsdl:documentation>
+      <wsdl:input message="tns:GetNextPredictedRoutesCollectionSoapIn" />
+      <wsdl:output message="tns:GetNextPredictedRoutesCollectionSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetSchedulesCollection">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Returns the next three scheduled passing times for the specified Tracker Stop ID, route number, low floor requirement, day, and time.&lt;br/&gt;&lt;br/&gt;&lt;table width='100%' cellpadding='4'&gt;&lt;tr style='font-weight: bold; color: black; background: #e8e8e8'&gt;&lt;td&gt;Parameters&lt;/td&gt;&lt;td&gt;Description&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td style='font-weight: bold;'&gt;stopNo&lt;/td&gt;&lt;td style='width: 85%;'&gt;Type: short. The 4-digit Tracker ID of the stop.&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td style='font-weight: bold;'&gt;routeNo&lt;/td&gt;&lt;td style='width: 85%;'&gt;Type: string. Specify the route number to filter the results to a particular route number or specify &lt;i&gt;0&lt;/i&gt; (zero) to retrieve results for all routes that pass the stop.&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td style='font-weight: bold;'&gt;lowFloor&lt;/td&gt;&lt;td style='width: 85%;'&gt;Type: boolean. Specify &lt;i&gt;true&lt;/i&gt; to retrieve low floor only results, or &lt;i&gt;false&lt;/i&gt; to retrieve low floor and non low floor results.&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td style='font-weight: bold;'&gt;clientRequestDateTime&lt;/td&gt;&lt;td style='width: 85%;'&gt;Type: DateTime. The start date and time of the requested schedules.&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;validationResult&lt;/b&gt; (&lt;i&gt;out&lt;/i&gt;)&lt;/td&gt;&lt;td style='width: 85%;'&gt;Type: string. An out parameter that holds any validation message from the service. Validation may be ignored if result exists.&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;br/&gt;</wsdl:documentation>
+      <wsdl:input message="tns:GetSchedulesCollectionSoapIn" />
+      <wsdl:output message="tns:GetSchedulesCollectionSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetSchedulesForTrip">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Returns a list of scheduled arrival times pertaining to a route for the specified trip ID and scheduled departure date and time. To determine the trip ID, use the GetSchedulesCollection method&lt;br/&gt;&lt;br/&gt;&lt;table width='100%' cellpadding='4'&gt;&lt;tr style='font-weight: bold; color: black; background: #e8e8e8'&gt;&lt;td&gt;Parameters&lt;/td&gt;&lt;td&gt;Description&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td style='font-weight: bold;'&gt;tripID&lt;/td&gt;&lt;td style='width: 85%;'&gt;Type: int. Use the GetSchedulesCollection method to obtain the trip ID.&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td style='font-weight: bold;'&gt;scheduledDateTime&lt;/td&gt;&lt;td style='width: 85%;'&gt;Type: DateTime. The start date and time of the requested schedules.&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;validationResult&lt;/b&gt; (&lt;i&gt;out&lt;/i&gt;)&lt;/td&gt;&lt;td style='width: 85%;'&gt;Type: string. An out parameter that holds any validation message from the service. Validation may be ignored if result exists.&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;br/&gt;</wsdl:documentation>
+      <wsdl:input message="tns:GetSchedulesForTripSoapIn" />
+      <wsdl:output message="tns:GetSchedulesForTripSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetNextPredictedArrivalTimeAtStopsForTramNo">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Returns: - the tram trip information (such as route number and direction) - the predicted arrival times at each stop that will be passed by the tram as it is making its way to its destination. The predicted arrival times for the trip are not always available.&lt;br/&gt;&lt;br/&gt;&lt;table width='100%' cellpadding='4'&gt;&lt;tr style='font-weight: bold; color: black; background: #e8e8e8'&gt;&lt;td&gt;Parameters&lt;/td&gt;&lt;td&gt;Description&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td style='font-weight: bold;'&gt;tramNo&lt;/td&gt;&lt;td style='width: 85%;'&gt;Type: short. 1 to 4-digit tram number as displayed on the tram interior and exterior.&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;validationResult&lt;/b&gt; (&lt;i&gt;out&lt;/i&gt;)&lt;/td&gt;&lt;td style='width: 85%;'&gt;Type: string. An out parameter that holds any validation message from the service.&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;br/&gt;</wsdl:documentation>
+      <wsdl:input message="tns:GetNextPredictedArrivalTimeAtStopsForTramNoSoapIn" />
+      <wsdl:output message="tns:GetNextPredictedArrivalTimeAtStopsForTramNoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetDestinationsForAllRoutes">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Returns a list of destinations for all routes in the network.&lt;br/&gt;&lt;br/&gt;&lt;table width='100%' cellpadding='4'&gt;&lt;tr style='font-weight: bold; color: black; background: #e8e8e8'&gt;&lt;td&gt;Parameters&lt;/td&gt;&lt;td&gt;Description&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;validationResult&lt;/b&gt; (&lt;i&gt;out&lt;/i&gt;)&lt;/td&gt;&lt;td style='width: 85%;'&gt;Type: string. An out parameter that holds any validation message from the service.&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;br/&gt;</wsdl:documentation>
+      <wsdl:input message="tns:GetDestinationsForAllRoutesSoapIn" />
+      <wsdl:output message="tns:GetDestinationsForAllRoutesSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetStopInformation">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Returns the stop information for the specified Tracker Stop ID. This information includes the stop flag number, intersection road names, longitude and latitude coordinates, and the suburb of the stop.&lt;br/&gt;&lt;br/&gt;&lt;table width='100%' cellpadding='4'&gt;&lt;tr style='font-weight: bold; color: black; background: #e8e8e8'&gt;&lt;td&gt;Parameters&lt;/td&gt;&lt;td&gt;Description&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td style='font-weight: bold;'&gt;stopNo&lt;/td&gt;&lt;td style='width: 85%;'&gt;Type: short. The 4-digit Tracker ID of the stop.&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;validationResult&lt;/b&gt; (&lt;i&gt;out&lt;/i&gt;)&lt;/td&gt;&lt;td style='width: 85%;'&gt;Type: string. An out parameter that holds any validation message from the service.&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;br/&gt;</wsdl:documentation>
+      <wsdl:input message="tns:GetStopInformationSoapIn" />
+      <wsdl:output message="tns:GetStopInformationSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetMainRoutesForStop">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Returns a list of main routes that pass the specified Tracker Stop ID.&lt;br/&gt;&lt;br/&gt;&lt;table width='100%' cellpadding='4'&gt;&lt;tr style='font-weight: bold; color: black; background: #e8e8e8'&gt;&lt;td&gt;Parameters&lt;/td&gt;&lt;td&gt;Description&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td style='font-weight: bold;'&gt;stopNo&lt;/td&gt;&lt;td style='width: 85%;'&gt;Type: short. The 4-digit Tracker ID of the stop.&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;validationResult&lt;/b&gt; (&lt;i&gt;out&lt;/i&gt;)&lt;/td&gt;&lt;td style='width: 85%;'&gt;Type: string. An out parameter that holds any validation message from the service.&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;br/&gt;</wsdl:documentation>
+      <wsdl:input message="tns:GetMainRoutesForStopSoapIn" />
+      <wsdl:output message="tns:GetMainRoutesForStopSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetMainRoutes">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Returns a list of all main routes in the network.&lt;br/&gt;&lt;br/&gt;&lt;table width='100%' cellpadding='4'&gt;&lt;tr style='font-weight: bold; color: black; background: #e8e8e8'&gt;&lt;td&gt;Parameters&lt;/td&gt;&lt;td&gt;Description&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;validationResult&lt;/b&gt; (&lt;i&gt;out&lt;/i&gt;)&lt;/td&gt;&lt;td style='width: 85%;'&gt;Type: string. An out parameter that holds any validation message from the service.&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;br/&gt;</wsdl:documentation>
+      <wsdl:input message="tns:GetMainRoutesSoapIn" />
+      <wsdl:output message="tns:GetMainRoutesSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetRouteSummaries">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Returns a list of summaries for all main routes in the network.&lt;br/&gt;&lt;br/&gt;&lt;table width='100%' cellpadding='4'&gt;&lt;tr style='font-weight: bold; color: black; background: #e8e8e8'&gt;&lt;td&gt;Parameters&lt;/td&gt;&lt;td&gt;Description&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;validationResult&lt;/b&gt; (&lt;i&gt;out&lt;/i&gt;)&lt;/td&gt;&lt;td style='width: 85%;'&gt;Type: string. An out parameter that holds any validation message from the service.&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;br/&gt;</wsdl:documentation>
+      <wsdl:input message="tns:GetRouteSummariesSoapIn" />
+      <wsdl:output message="tns:GetRouteSummariesSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetDestinationsForRoute">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Returns destinations of both travel directions for the route specified.&lt;br/&gt;&lt;br/&gt;&lt;table width='100%' cellpadding='4'&gt;&lt;tr style='font-weight: bold; color: black; background: #e8e8e8'&gt;&lt;td&gt;Parameters&lt;/td&gt;&lt;td&gt;Description&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td style='font-weight: bold;'&gt;routeNo&lt;/td&gt;&lt;td style='width: 85%;'&gt;Type: string. Specify the route number to filter the results to a particular route number, or specify &lt;i&gt;0&lt;/i&gt; (zero) to retrieve results for all routes that pass the stop. A route number is 1 to 3-digit followed by 0 or 1 alphabet.&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;validationResult&lt;/b&gt; (&lt;i&gt;out&lt;/i&gt;)&lt;/td&gt;&lt;td style='width: 85%;'&gt;Type: string. An out parameter that holds any validation message from the service.&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;br/&gt;</wsdl:documentation>
+      <wsdl:input message="tns:GetDestinationsForRouteSoapIn" />
+      <wsdl:output message="tns:GetDestinationsForRouteSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetListOfStopsByRouteNoAndDirection">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Returns a list of stop information for the specified route and direction of travel. To determine the Up and Down direction of travel for a route, use the GetDestinationsForRoute method.&lt;br/&gt;&lt;br/&gt;&lt;table width='100%' cellpadding='4'&gt;&lt;tr style='font-weight: bold; color: black; background: #e8e8e8'&gt;&lt;td&gt;Parameters&lt;/td&gt;&lt;td&gt;Description&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td style='font-weight: bold;'&gt;routeNo&lt;/td&gt;&lt;td style='width: 85%;'&gt;Type: string. Specify the route number to filter the results to a particular route number, or specify &lt;i&gt;0&lt;/i&gt; (zero) to retrieve results for all routes that pass the stop. A route number is 1 to 3-digit followed by 0 or 1 alphabet.&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td style='font-weight: bold;'&gt;isUpDirection&lt;/td&gt;&lt;td style='width: 85%;'&gt;Type: boolean. The GetDestinationsForAllRoutes and GetDestinationsForRoute methods can be used to obtain the Up/Down direction information.&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;validationResult&lt;/b&gt; (&lt;i&gt;out&lt;/i&gt;)&lt;/td&gt;&lt;td style='width: 85%;'&gt;Type: string. An out parameter that holds any validation message from the service.&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;br/&gt;</wsdl:documentation>
+      <wsdl:input message="tns:GetListOfStopsByRouteNoAndDirectionSoapIn" />
+      <wsdl:output message="tns:GetListOfStopsByRouteNoAndDirectionSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetPlatformStopsByRouteAndDirection">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Returns a list of platform stops for the specified route and direction of travel. To determine the Up and Down direction of travel for a route, use the GetDestinationsForRoute method.&lt;br/&gt;&lt;br/&gt;&lt;table width='100%' cellpadding='4'&gt;&lt;tr style='font-weight: bold; color: black; background: #e8e8e8'&gt;&lt;td&gt;Parameters&lt;/td&gt;&lt;td&gt;Description&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td style='font-weight: bold;'&gt;routeNo&lt;/td&gt;&lt;td style='width: 85%;'&gt;Type: string. Specify the route number to filter the results to a particular route number, or specify &lt;i&gt;0&lt;/i&gt; (zero) to retrieve results for all routes that pass the stop. A route number is 1 to 3-digit followed by 0 or 1 alphabet.&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td style='font-weight: bold;'&gt;isUpDirection&lt;/td&gt;&lt;td style='width: 85%;'&gt;Type: boolean. The GetDestinationsForAllRoutes and GetDestinationsForRoute methods can be used to obtain the Up/Down direction information.&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;validationResult&lt;/b&gt; (&lt;i&gt;out&lt;/i&gt;)&lt;/td&gt;&lt;td style='width: 85%;'&gt;Type: string. An out parameter that holds any validation message from the service.&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;br/&gt;</wsdl:documentation>
+      <wsdl:input message="tns:GetPlatformStopsByRouteAndDirectionSoapIn" />
+      <wsdl:output message="tns:GetPlatformStopsByRouteAndDirectionSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetRouteStopsByRoute">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">New method for returning a list of stop information for the specified route.&lt;br/&gt;&lt;br/&gt;&lt;table width='100%' cellpadding='4'&gt;&lt;tr style='font-weight: bold; color: black; background: #e8e8e8'&gt;&lt;td&gt;Parameters&lt;/td&gt;&lt;td&gt;Description&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td style='font-weight: bold;'&gt;routeNo&lt;/td&gt;&lt;td style='width: 85%;'&gt;Type: string. Specify the route number to filter the results to a particular route number, or specify &lt;i&gt;0&lt;/i&gt; (zero) to retrieve results for all routes that pass the stop. A route number is 1 to 3-digit followed by 0 or 1 alphabet.&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td style='font-weight: bold;'&gt;isUpDirection&lt;/td&gt;&lt;td style='width: 85%;'&gt;Type: boolean. The GetDestinationsForAllRoutes and GetDestinationsForRoute methods can be used to obtain the Up/Down direction information.&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;validationResult&lt;/b&gt; (&lt;i&gt;out&lt;/i&gt;)&lt;/td&gt;&lt;td style='width: 85%;'&gt;Type: string. An out parameter that holds any validation message from the service.&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;br/&gt;</wsdl:documentation>
+      <wsdl:input message="tns:GetRouteStopsByRouteSoapIn" />
+      <wsdl:output message="tns:GetRouteStopsByRouteSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetStopsAndRoutesUpdatesSince">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Returns a list of routes and Tracker IDs whose information have been updated since the date specified in the parameter (dateSince). To obtain detailed information of the updates, use GetStopInformation, GetListOfStopsByRouteNoAndDirection, and GetDestinationsForRoute methods.&lt;br/&gt;&lt;br/&gt;&lt;table width='100%' cellpadding='4'&gt;&lt;tr style='font-weight: bold; color: black; background: #e8e8e8'&gt;&lt;td&gt;Parameters&lt;/td&gt;&lt;td&gt;Description&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td style='font-weight: bold;'&gt;dateSince&lt;/td&gt;&lt;td style='width: 85%;'&gt;Type: DateTime. The date and time when the stop and route information was updated. This date cannot be after today's date and cannot be before the 07th July 2009&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;validationResult&lt;/b&gt; (&lt;i&gt;out&lt;/i&gt;)&lt;/td&gt;&lt;td style='width: 85%;'&gt;Type: string. An out parameter that holds any validation message from the service.&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;br/&gt;</wsdl:documentation>
+      <wsdl:input message="tns:GetStopsAndRoutesUpdatesSinceSoapIn" />
+      <wsdl:output message="tns:GetStopsAndRoutesUpdatesSinceSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetNewClientGuid">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Returns a new Globally Unique Identifier (GUID) for the client application. This GUID is used in conjunction with the PIDS Client Header, which must be supplied for the Web Method call to be successful.&lt;br/&gt;&lt;br/&gt;&lt;br/&gt;</wsdl:documentation>
+      <wsdl:input message="tns:GetNewClientGuidSoapIn" />
+      <wsdl:output message="tns:GetNewClientGuidSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="tramTRACKER_x0020_PIDS_x0020_Web_x0020_ServiceSoap" type="tns:tramTRACKER_x0020_PIDS_x0020_Web_x0020_ServiceSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="TestGetDestinationsForRoute">
+      <soap:operation soapAction="http://www.yarratrams.com.au/pidsservice/TestGetDestinationsForRoute" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TestGetDestinationsForAllRoutes">
+      <soap:operation soapAction="http://www.yarratrams.com.au/pidsservice/TestGetDestinationsForAllRoutes" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TestGetListOfStopsByRouteNoAndDirection">
+      <soap:operation soapAction="http://www.yarratrams.com.au/pidsservice/TestGetListOfStopsByRouteNoAndDirection" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TestGetPlatformStopsByRouteAndDirection">
+      <soap:operation soapAction="http://www.yarratrams.com.au/pidsservice/TestGetPlatformStopsByRouteAndDirection" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TestGetRouteStopsByRoute">
+      <soap:operation soapAction="http://www.yarratrams.com.au/pidsservice/TestGetRouteStopsByRoute" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TestGetMainRoutes">
+      <soap:operation soapAction="http://www.yarratrams.com.au/pidsservice/TestGetMainRoutes" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TestGetRouteSummaries">
+      <soap:operation soapAction="http://www.yarratrams.com.au/pidsservice/TestGetRouteSummaries" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TestGetMainRoutesForStop">
+      <soap:operation soapAction="http://www.yarratrams.com.au/pidsservice/TestGetMainRoutesForStop" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TestGetNextPredictedArrivalTimeAtStopsForTramNo">
+      <soap:operation soapAction="http://www.yarratrams.com.au/pidsservice/TestGetNextPredictedArrivalTimeAtStopsForTramNo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TestGetNextPredictedRoutesCollection">
+      <soap:operation soapAction="http://www.yarratrams.com.au/pidsservice/TestGetNextPredictedRoutesCollection" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TestGetSchedulesCollection">
+      <soap:operation soapAction="http://www.yarratrams.com.au/pidsservice/TestGetSchedulesCollection" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TestGetSchedulesForTrip">
+      <soap:operation soapAction="http://www.yarratrams.com.au/pidsservice/TestGetSchedulesForTrip" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TestGetStopInformation">
+      <soap:operation soapAction="http://www.yarratrams.com.au/pidsservice/TestGetStopInformation" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TestGetStopsAndRoutesUpdatesSince">
+      <soap:operation soapAction="http://www.yarratrams.com.au/pidsservice/TestGetStopsAndRoutesUpdatesSince" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetNextPredictedRoutesCollection">
+      <soap:operation soapAction="http://www.yarratrams.com.au/pidsservice/GetNextPredictedRoutesCollection" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:GetNextPredictedRoutesCollectionPidsClientHeader" part="PidsClientHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetSchedulesCollection">
+      <soap:operation soapAction="http://www.yarratrams.com.au/pidsservice/GetSchedulesCollection" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:GetSchedulesCollectionPidsClientHeader" part="PidsClientHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetSchedulesForTrip">
+      <soap:operation soapAction="http://www.yarratrams.com.au/pidsservice/GetSchedulesForTrip" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:GetSchedulesForTripPidsClientHeader" part="PidsClientHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetNextPredictedArrivalTimeAtStopsForTramNo">
+      <soap:operation soapAction="http://www.yarratrams.com.au/pidsservice/GetNextPredictedArrivalTimeAtStopsForTramNo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:GetNextPredictedArrivalTimeAtStopsForTramNoPidsClientHeader" part="PidsClientHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDestinationsForAllRoutes">
+      <soap:operation soapAction="http://www.yarratrams.com.au/pidsservice/GetDestinationsForAllRoutes" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:GetDestinationsForAllRoutesPidsClientHeader" part="PidsClientHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetStopInformation">
+      <soap:operation soapAction="http://www.yarratrams.com.au/pidsservice/GetStopInformation" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:GetStopInformationPidsClientHeader" part="PidsClientHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetMainRoutesForStop">
+      <soap:operation soapAction="http://www.yarratrams.com.au/pidsservice/GetMainRoutesForStop" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:GetMainRoutesForStopPidsClientHeader" part="PidsClientHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetMainRoutes">
+      <soap:operation soapAction="http://www.yarratrams.com.au/pidsservice/GetMainRoutes" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:GetMainRoutesPidsClientHeader" part="PidsClientHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetRouteSummaries">
+      <soap:operation soapAction="http://www.yarratrams.com.au/pidsservice/GetRouteSummaries" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:GetRouteSummariesPidsClientHeader" part="PidsClientHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDestinationsForRoute">
+      <soap:operation soapAction="http://www.yarratrams.com.au/pidsservice/GetDestinationsForRoute" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:GetDestinationsForRoutePidsClientHeader" part="PidsClientHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetListOfStopsByRouteNoAndDirection">
+      <soap:operation soapAction="http://www.yarratrams.com.au/pidsservice/GetListOfStopsByRouteNoAndDirection" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:GetListOfStopsByRouteNoAndDirectionPidsClientHeader" part="PidsClientHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPlatformStopsByRouteAndDirection">
+      <soap:operation soapAction="http://www.yarratrams.com.au/pidsservice/GetPlatformStopsByRouteAndDirection" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:GetPlatformStopsByRouteAndDirectionPidsClientHeader" part="PidsClientHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetRouteStopsByRoute">
+      <soap:operation soapAction="http://www.yarratrams.com.au/pidsservice/GetRouteStopsByRoute" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:GetRouteStopsByRoutePidsClientHeader" part="PidsClientHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetStopsAndRoutesUpdatesSince">
+      <soap:operation soapAction="http://www.yarratrams.com.au/pidsservice/GetStopsAndRoutesUpdatesSince" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:GetStopsAndRoutesUpdatesSincePidsClientHeader" part="PidsClientHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetNewClientGuid">
+      <soap:operation soapAction="http://www.yarratrams.com.au/pidsservice/GetNewClientGuid" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="tramTRACKER_x0020_PIDS_x0020_Web_x0020_ServiceSoap12" type="tns:tramTRACKER_x0020_PIDS_x0020_Web_x0020_ServiceSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="TestGetDestinationsForRoute">
+      <soap12:operation soapAction="http://www.yarratrams.com.au/pidsservice/TestGetDestinationsForRoute" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TestGetDestinationsForAllRoutes">
+      <soap12:operation soapAction="http://www.yarratrams.com.au/pidsservice/TestGetDestinationsForAllRoutes" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TestGetListOfStopsByRouteNoAndDirection">
+      <soap12:operation soapAction="http://www.yarratrams.com.au/pidsservice/TestGetListOfStopsByRouteNoAndDirection" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TestGetPlatformStopsByRouteAndDirection">
+      <soap12:operation soapAction="http://www.yarratrams.com.au/pidsservice/TestGetPlatformStopsByRouteAndDirection" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TestGetRouteStopsByRoute">
+      <soap12:operation soapAction="http://www.yarratrams.com.au/pidsservice/TestGetRouteStopsByRoute" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TestGetMainRoutes">
+      <soap12:operation soapAction="http://www.yarratrams.com.au/pidsservice/TestGetMainRoutes" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TestGetRouteSummaries">
+      <soap12:operation soapAction="http://www.yarratrams.com.au/pidsservice/TestGetRouteSummaries" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TestGetMainRoutesForStop">
+      <soap12:operation soapAction="http://www.yarratrams.com.au/pidsservice/TestGetMainRoutesForStop" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TestGetNextPredictedArrivalTimeAtStopsForTramNo">
+      <soap12:operation soapAction="http://www.yarratrams.com.au/pidsservice/TestGetNextPredictedArrivalTimeAtStopsForTramNo" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TestGetNextPredictedRoutesCollection">
+      <soap12:operation soapAction="http://www.yarratrams.com.au/pidsservice/TestGetNextPredictedRoutesCollection" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TestGetSchedulesCollection">
+      <soap12:operation soapAction="http://www.yarratrams.com.au/pidsservice/TestGetSchedulesCollection" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TestGetSchedulesForTrip">
+      <soap12:operation soapAction="http://www.yarratrams.com.au/pidsservice/TestGetSchedulesForTrip" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TestGetStopInformation">
+      <soap12:operation soapAction="http://www.yarratrams.com.au/pidsservice/TestGetStopInformation" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TestGetStopsAndRoutesUpdatesSince">
+      <soap12:operation soapAction="http://www.yarratrams.com.au/pidsservice/TestGetStopsAndRoutesUpdatesSince" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetNextPredictedRoutesCollection">
+      <soap12:operation soapAction="http://www.yarratrams.com.au/pidsservice/GetNextPredictedRoutesCollection" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:GetNextPredictedRoutesCollectionPidsClientHeader" part="PidsClientHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetSchedulesCollection">
+      <soap12:operation soapAction="http://www.yarratrams.com.au/pidsservice/GetSchedulesCollection" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:GetSchedulesCollectionPidsClientHeader" part="PidsClientHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetSchedulesForTrip">
+      <soap12:operation soapAction="http://www.yarratrams.com.au/pidsservice/GetSchedulesForTrip" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:GetSchedulesForTripPidsClientHeader" part="PidsClientHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetNextPredictedArrivalTimeAtStopsForTramNo">
+      <soap12:operation soapAction="http://www.yarratrams.com.au/pidsservice/GetNextPredictedArrivalTimeAtStopsForTramNo" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:GetNextPredictedArrivalTimeAtStopsForTramNoPidsClientHeader" part="PidsClientHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDestinationsForAllRoutes">
+      <soap12:operation soapAction="http://www.yarratrams.com.au/pidsservice/GetDestinationsForAllRoutes" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:GetDestinationsForAllRoutesPidsClientHeader" part="PidsClientHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetStopInformation">
+      <soap12:operation soapAction="http://www.yarratrams.com.au/pidsservice/GetStopInformation" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:GetStopInformationPidsClientHeader" part="PidsClientHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetMainRoutesForStop">
+      <soap12:operation soapAction="http://www.yarratrams.com.au/pidsservice/GetMainRoutesForStop" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:GetMainRoutesForStopPidsClientHeader" part="PidsClientHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetMainRoutes">
+      <soap12:operation soapAction="http://www.yarratrams.com.au/pidsservice/GetMainRoutes" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:GetMainRoutesPidsClientHeader" part="PidsClientHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetRouteSummaries">
+      <soap12:operation soapAction="http://www.yarratrams.com.au/pidsservice/GetRouteSummaries" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:GetRouteSummariesPidsClientHeader" part="PidsClientHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDestinationsForRoute">
+      <soap12:operation soapAction="http://www.yarratrams.com.au/pidsservice/GetDestinationsForRoute" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:GetDestinationsForRoutePidsClientHeader" part="PidsClientHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetListOfStopsByRouteNoAndDirection">
+      <soap12:operation soapAction="http://www.yarratrams.com.au/pidsservice/GetListOfStopsByRouteNoAndDirection" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:GetListOfStopsByRouteNoAndDirectionPidsClientHeader" part="PidsClientHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPlatformStopsByRouteAndDirection">
+      <soap12:operation soapAction="http://www.yarratrams.com.au/pidsservice/GetPlatformStopsByRouteAndDirection" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:GetPlatformStopsByRouteAndDirectionPidsClientHeader" part="PidsClientHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetRouteStopsByRoute">
+      <soap12:operation soapAction="http://www.yarratrams.com.au/pidsservice/GetRouteStopsByRoute" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:GetRouteStopsByRoutePidsClientHeader" part="PidsClientHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetStopsAndRoutesUpdatesSince">
+      <soap12:operation soapAction="http://www.yarratrams.com.au/pidsservice/GetStopsAndRoutesUpdatesSince" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:GetStopsAndRoutesUpdatesSincePidsClientHeader" part="PidsClientHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetNewClientGuid">
+      <soap12:operation soapAction="http://www.yarratrams.com.au/pidsservice/GetNewClientGuid" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="tramTRACKER_x0020_PIDS_x0020_Web_x0020_Service">
+    <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">&lt;table style='width:80%;' cellpadding='10'&gt;&lt;tr&gt;&lt;td&gt;&lt;img alt='tramTRACKER&amp;reg' src='./images/tramTRACKER.jpg' /&gt;&lt;/td&gt;&lt;td&gt;&lt;p&gt;tramTRACKER&lt;sup&gt;&amp;reg&lt;/sup&gt; PIDS Web Service is a public Web Service that provides a set of Web Methods to request real-time and scheduled tram arrival times, as well as stops and routes information.&lt;/p&gt;&lt;p&gt;By using this Web Service, you accept and agree to be bound by the tramTRACKER&lt;sup&gt;&amp;reg&lt;/sup&gt; PIDS Web Service terms &amp; conditions. The latest copy of the terms and conditions can be found &lt;a href='Terms.aspx'&gt;here&lt;/a&gt;.&lt;/p&gt;&lt;p&gt;You can keep yourself informed on the latest changes to the service by subscribing to our RSS feeds &lt;a href='updates.xml'&gt;here&lt;/a&gt;.&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan='2'&gt;&lt;b&gt;How to Use&lt;/b&gt;&lt;br /&gt;&lt;p&gt;Each Web method call requires a valid SOAP Header to be included in the SOAP Message.Otherwise, the request will be denied.&lt;/p&gt;A SOAP Header consists of the following information:&lt;br /&gt;&lt;table style='width: 100%;' cellpadding='4'&gt;&lt;tr&gt;&lt;td style='width: 20%; font-weight: bold;'&gt;ClientGuid&lt;/td&gt;&lt;td style='width: 80%;'&gt;Each instance of a client application needs a unique GUID.&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td style='width: 20%; font-weight: bold;'&gt;ClientType&lt;/td&gt;&lt;td style='width: 80%;'&gt;The client application type. If you are developing an application and would like adedicated client type, please send your request to:&lt;br /&gt;feedback&lt;img src='./images/sign.gif' /&gt;yarratrams.com.au.&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td style='width: 20%; font-weight: bold;'&gt;ClientVersion&lt;/td&gt;&lt;td style='width: 80%;'&gt;The version of the client application. The version format has to match the following regular expression: &lt;br/&gt;"&lt;i&gt;^(\d{1,3})(\.\d{1,3})?(\.\d{1,3})?(\.\d{1,5})?$&lt;/i&gt;".&lt;br/&gt;&lt;br/&gt; For example, 1.0, 1.0.0 or 1.0.0.0 &lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td style='width: 20%; font-weight: bold;'&gt;ClientWebServiceVersion&lt;/td&gt;&lt;td style='width: 80%;'&gt;The current Web Service version that the client application is connecting to. The version format has to match the following expression: &lt;br/&gt;"&lt;i&gt;^(\d{1,3}\.)(\d{1,3}\.)(\d{1,3}\.)(\d{1,5})$&lt;/i&gt;". &lt;br/&gt;&lt;br/&gt;For example: 1.0.0.0&lt;br/&gt;&lt;br /&gt;The current Web Service version is 6.4.0.0&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;br /&gt;&lt;br /&gt;</wsdl:documentation>
+    <wsdl:port name="tramTRACKER_x0020_PIDS_x0020_Web_x0020_ServiceSoap" binding="tns:tramTRACKER_x0020_PIDS_x0020_Web_x0020_ServiceSoap">
+      <soap:address location="http://ws.tramtracker.com.au/pidsservice/pids.asmx" />
+    </wsdl:port>
+    <wsdl:port name="tramTRACKER_x0020_PIDS_x0020_Web_x0020_ServiceSoap12" binding="tns:tramTRACKER_x0020_PIDS_x0020_Web_x0020_ServiceSoap12">
+      <soap12:address location="http://ws.tramtracker.com.au/pidsservice/pids.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

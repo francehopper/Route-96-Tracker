@@ -1,0 +1,276 @@
+body
+{
+	font-family:			Arial;
+	color:					#ffffff;
+	font-size:				24px;
+	background-color:		#000000;
+}
+
+#container
+{
+	position:				absolute;
+	top:					0px;
+	left:					0px;
+	right:					0px;
+	bottom:					0px;
+	overflow:				hidden;
+}
+
+#pid
+{
+	position:				relative;
+	top:					0px;
+	z-index:				1;
+}
+
+#title
+{
+	font-size:			30px;
+	position:			absolute;
+	top:				85px;
+	left:				22px;
+	width: 				400px;
+	overflow:			hidden;
+	text-overflow:		ellipsis;
+	white-space:		nowrap;
+	font-weight:		bold;
+	text-shadow:		rgba(0, 0, 0, 0.14) 0px -1px;
+}
+
+#subtitle
+{
+	font-size:			24px;
+	position:			absolute;
+	top:				125px;
+	left:				22px;
+	width: 				400px;
+	overflow:			hidden;
+	text-overflow:		ellipsis;
+	white-space:		nowrap;
+}
+
+#trackerid
+{
+	color:				#000000;
+	font-size:			20px;
+	position:			absolute;
+	top:				175px;
+	left:				180px;
+}
+
+#stopid
+{
+	color:				#000000;
+	font-size:			20px;
+	position:			absolute;
+	top:				175px;
+	left:				380px;
+}
+
+#screencontainer
+{
+	position:			absolute;
+	top:				247px;
+	left:				28px;
+	width:				393px;
+	height:				296px;
+	overflow:			hidden;
+}
+#screencontainer > div
+{
+	position:			relative;
+	z-index:			2;
+}
+
+#screen
+{
+	top:				0px;
+	left:				0px;
+	position:			absolute;
+}
+
+td.route
+{
+	width:				83px;
+	height:				87px;
+	text-align:			center;
+	font-size:			24px;
+}
+
+td.destination
+{
+	width:				191px;
+	height:				87px;
+	text-align:			left;
+	padding-left:		10px;
+	color:				#000000;
+	font-size:			24px;
+}
+
+td.icons
+{
+	width:				23px;
+	height:				85px;
+	text-align:			left;
+	vertical-align:		top;
+	padding-top:		2px;
+}
+
+td.icons img
+{
+	padding:			0px;
+	margin:				0px;
+	border:				0px;
+	float:				left;
+}
+
+td.mins
+{
+	width:				83px;
+	height:				87px;
+	padding-left:		2px;
+	padding-right:		2px;
+	text-align:			center;
+	font-size:			24px;
+}
+
+td#time
+{
+	height:				34px;
+	text-align:			right;
+	padding-right:		5px;
+	font-size:			24px;
+}
+
+
+#specialeventheader, #disruptionheader, #errorheader
+{
+	position:			absolute;
+	top:				0px;
+	font-weight:		bold;
+	color:				#ffffff;
+	padding:			2px 4px;
+	width:				393px;
+	height:				30px;
+	font-size:			24px;
+}
+#specialeventmessage, #disruptionmessage, #errormessage
+{
+	position:			absolute;
+	top:				40px;
+	left:				10px;
+	right:				10px;
+	font-size:			20px;
+	color:				#ffffff;
+	width:				393px;
+	height:				266px;
+	font-size:			24px;
+}
+
+#specialevent, #disruption, #error
+{
+	position:			absolute;
+	top:				247px;
+	left:				28px;
+	width:				393px;
+	height:				296px;
+	overflow:			hidden;
+}
+
+#specialevent > div, #disruption > div, #error > div
+{
+	position:			relative;
+	z-index:			3;
+}
+
+#filterinfo
+{
+	position:			absolute;
+	top:				560px;
+	left:				16px;
+	color:				#000000;
+	font-weight:		bold;
+	font-size:			24px;
+}
+
+#route_filter
+{
+	position:			absolute;
+	top:				560px;
+	left:				158px;
+	width:				45px;
+	height:				24px;
+	font-weight:		bold;
+	color:				#ffffff;
+	text-align:			center;
+	background:			transparent url(http://webpids.tramtracker.com.au/misc/large/route_filter.png) left top no-repeat;
+	font-size:			24px;
+}
+
+td.paused
+{
+	background:			transparent url(http://webpids.tramtracker.com.au/misc/medium/red.png) 4px center no-repeat !important;
+}
+
+td.playing
+{
+	background:			transparent url(http://webpids.tramtracker.com.au/misc/medium/green.png) 4px center no-repeat !important;
+}
+
+td.warning
+{
+	background:			transparent url(http://webpids.tramtracker.com.au/misc/medium/yellow.png) 4px center no-repeat !important;
+}
+
+.tram_class_z1,
+.tram_class_z2
+{
+	background:			transparent url(http://webpids.tramtracker.com.au/misc/large/trams/z1.png) 3px 69px no-repeat;
+}
+
+.tram_class_z3
+{
+	background:			transparent url(http://webpids.tramtracker.com.au/misc/large/trams/z3.png) 3px 69px no-repeat;
+}
+
+.tram_class_a1,
+.tram_class_a2
+{
+	background:			transparent url(http://webpids.tramtracker.com.au/misc/large/trams/a.png) 3px 69px no-repeat;
+}
+
+.tram_class_b1,
+.tram_class_b2
+{
+	background:			transparent url(http://webpids.tramtracker.com.au/misc/large/trams/b.png) 3px 69px no-repeat;
+}
+
+.tram_class_w
+{
+	background:			transparent url(http://webpids.tramtracker.com.au/misc/large/trams/w.png) 3px 69px no-repeat;
+}
+
+.tram_class_c
+{
+	background:			transparent url(http://webpids.tramtracker.com.au/misc/large/trams/c.png) 3px 69px no-repeat;
+}
+
+.tram_class_c2
+{
+	background:			transparent url(http://webpids.tramtracker.com.au/misc/large/trams/c2.png) 3px 69px no-repeat;
+}
+
+.tram_class_d1
+{
+	background:			transparent url(http://webpids.tramtracker.com.au/misc/large/trams/d1.png) 3px 69px no-repeat;
+}
+
+.tram_class_d2
+{
+	background:			transparent url(http://webpids.tramtracker.com.au/misc/large/trams/d2.png) 3px 69px no-repeat;
+}
+
+.tram_class_e
+{
+	background:			transparent url(http://fhnwrk.com/TramTracker/sandbox/e.png) 2px 46px no-repeat;
+}
